@@ -33,7 +33,37 @@ window.onload = () => {
 		bear1.addEventListener("timeupdate", () => {
 			let cur1 = bear1.currentTime;			//現在の再生時間を取得
 			txtbox1.setAttribute("value", cur1);	//テキストボックスの内容を変更
+							
+			if(cur1 >= 3)
+			{
+				let bear2 = document.querySelector("#bear2");
+				bear2.currentTime = cur1;
+				//bear1.pause();
+				bear2.play();
+				
+				let txtbox2 = document.querySelector("#bear2time");
+				bear2.addEventListener("timeupdate", () => {
+					let cur2 = bear2.currentTime;
+					txtbox2.setAttribute("value", cur2);
+					
+					if(cur2 >= 6)
+					{
+						let bear3 = document.querySelector("#bear3");
+						bear3.currentTime = cur2;
+						//bear2.pause();
+						bear3.play();
+					
+						let txtbox3 = document.querySelector("#bear3time");
+						bear3.addEventListener("timeupdate", () => {
+						let cur3 = bear3.currentTime;
+						txtbox3.setAttribute("value", cur3);
+						});
+					}
+				});
+				
+			}
 		});
+
 	};
 
 	//------------------------------------
